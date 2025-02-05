@@ -1,14 +1,15 @@
 module CLA_nbit #(parameter N = 4)(
     input [N-1:0] A, B,
-    output [N:0] Sum
+    output [N-1:0] Sum,
+    output Cout
 );
     wire [N:0] carry;
-    wire [N-1:0] Gen, Prop, w_sum;
+    wire [N-1:0] Gen, Prop;
 
     genvar i;
     generate
         for(i=0; i<N; i=i+1)
-            FullAdder FA(.a(A[i]), .b(B[i]), .cin(carry[i]), .sum(w_sum[i]));
+            FullAdder FA(.a(A[i]), .b(B[i]), .cin(carry[i]), .sum(Sum[i]));
     endgenerate
     
     assign carry[0] = 1'b0;
@@ -20,7 +21,7 @@ module CLA_nbit #(parameter N = 4)(
             assign carry[j+1] = Gen[j] | (Prop[j] & carry[j]);
         end
     endgenerate
-    assign Sum = {carry[N], w_sum};
+    assign Cout = carry[N];
 endmodule
 
 module FullAdder(
