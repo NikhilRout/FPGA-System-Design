@@ -1,7 +1,7 @@
 module CSA_tb;
     parameter M = 8, N = 4;
     reg [N-1:0] Operands [M-1:0];
-    wire [M+1:0] Sum;
+    wire [N+M-3:0] Sum;
     wire Cout;
 
     CSA #(.M(M), .N(N)) uut(.Operands(Operands), .Sum(Sum), .Cout(Cout));

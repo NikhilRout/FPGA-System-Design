@@ -1,9 +1,9 @@
 //Carry Save Adder
 //M operands N-bit depth
 
-module CSA #(parameter M = 8, N = 4) (
+module CSA #(parameter M = 6, N = 4) (
     input [N-1:0] Operands [M-1:0],
-    output [M+1:0] Sum,
+    output [N+M-3:0] Sum,
     output Cout
 );
 
