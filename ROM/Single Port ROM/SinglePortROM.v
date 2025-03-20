@@ -15,6 +15,7 @@ module SinglePortROM (
         mem[7] = 4'b1011;
     end
     always @(posedge clk) begin
-        data_out <= mem[addr];
+        if(en)
+            data_out <= mem[addr];
     end
 endmodule
