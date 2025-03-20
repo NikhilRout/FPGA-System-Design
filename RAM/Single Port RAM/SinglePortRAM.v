@@ -9,8 +9,8 @@ module SinglePortRAM #(
     reg [DATA_WIDTH-1:0] mem[0:DEPTH-1];
     always @(posedge clk) begin
         if(wr_en) //prioritizing wr over rd if both are HIGH
-            data_out <= mem[addr];
-        else if(rd_en)
             mem[addr] <= data_in;
+        else if(rd_en)
+            data_out <= mem[addr];
     end
 endmodule
