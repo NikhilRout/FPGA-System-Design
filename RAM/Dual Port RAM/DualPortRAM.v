@@ -10,7 +10,7 @@ module DualPortRAM #(
     reg [DATA_WIDTH-1:0] mem[0:DEPTH-1];
     always @(posedge clka) begin
         if(wr_ena) //prioritizing wr over rd if both are HIGH
-            mem[addra] <= data_in;
+            mem[addra] <= data_ina;
         else if(rd_ena)
             data_outa <= mem[addra];
     end
