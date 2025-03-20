@@ -22,7 +22,7 @@ module serial_adder_mealy (
             end
             H: begin
                 sum <= a ~^ b;
-                ns <= (a ~| b) ? G : H;
+                ns <= ~(a | b) ? G : H;
             end
             default: ns <= G;
         endcase
