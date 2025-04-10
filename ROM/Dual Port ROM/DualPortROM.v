@@ -4,7 +4,7 @@ module DualPortROM (
     output reg [3:0] data_outa, data_outb 
 );
     reg [3:0] mem[0:7];
-    always @(*) begin
+    initial begin
         mem[0] = 4'b0001;
         mem[1] = 4'b0011;
         mem[2] = 4'b1010;
